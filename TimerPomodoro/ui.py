@@ -22,7 +22,7 @@ class PomodoroUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Pomodoro Timer Pro 2.0")
-        self.root.geometry("600x750")
+        self.root.geometry("800x1000")
         self.root.resizable(False, False)
         self.root.configure(bg=self.COLORS['bg_dark'])
         
@@ -284,7 +284,7 @@ class PomodoroUI:
     
     def _create_controls(self):
         """Crea controlli timer"""
-        controls = tk.Frame(self.root)
+        controls = tk.Frame(self.root, bg=self.COLORS['bg_dark'])
         controls.pack(pady=20)
         
         # AVVIA
@@ -314,7 +314,8 @@ class PomodoroUI:
             height=2,
             relief=tk.RAISED,
             bd=3,
-            state=tk.DISABLED
+            state=tk.DISABLED,
+            disabledforeground="white"
         )
         self.pause_btn.grid(row=0, column=1, padx=8)
         
@@ -330,7 +331,8 @@ class PomodoroUI:
             height=2,
             relief=tk.RAISED,
             bd=3,
-            state=tk.DISABLED
+            state=tk.DISABLED,
+            disabledforeground="white"
         )
         self.stop_btn.grid(row=0, column=2, padx=8)
         
@@ -340,6 +342,8 @@ class PomodoroUI:
             text="🔄 Reset Contatore Sessioni",
             command=self._reset_sessions,
             font=("Arial", 10),
+            bg="#7F8C8D",
+            fg="white", 
             relief=tk.RAISED,
             bd=2,
             padx=10,
