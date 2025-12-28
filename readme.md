@@ -1,164 +1,280 @@
-# 🍅 Pomodoro Timer Pro - Guida Completa
+# 🍅 Pomodoro Timer Pro 2.0
 
-## Descrizione
-Applicazione desktop Windows per gestire il tempo di studio con la tecnica Pomodoro completamente personalizzabile.
+![Version](https://img.shields.io/badge/version-2.0-red)
+![Python](https://img.shields.io/badge/python-3.8+-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-## Funzionalità
-✅ Timer completamente personalizzabile
-✅ Modalità Pomodoro con intervalli configurabili
-✅ Notifica sonora allo scadere del tempo
-✅ Contatore sessioni completate
-✅ Riposo breve e lungo personalizzabili
-✅ Pausa e ripresa del timer
-✅ Interfaccia grafica intuitiva
-✅ Gestione dipendenze con UV (velocissimo!)
+**Timer Pomodoro professionale con interfaccia grafica moderna** per massimizzare la tua produttività.
 
-## 🚀 Come Creare l'Eseguibile .EXE (METODO CONSIGLIATO CON UV)
+## ✨ Caratteristiche Principali
 
-### ⚡ Metodo Rapido - Automatico
+### 🎨 Interfaccia Moderna
+- Design pulito con sfumature di **nero, grigio e rosso**
+- Barra di progresso visuale
+- Statistiche in tempo reale
+- Effetti visivi per distinguere studio e pause
 
-1. **Scarica tutti i file** nella stessa cartella
-2. **Fai doppio click** su `setup_uv.bat` (prima volta - installa tutto)
-3. **Fai doppio click** su `crea_exe_uv.bat` (crea l'exe)
-4. **Trova l'exe** in `dist/PomodoroTimer.exe`
+### ⚙️ Funzionalità Complete
+- ✅ Timer completamente personalizzabile
+- ✅ Modalità Pomodoro automatica (studio → pausa breve → studio → pausa lunga)
+- ✅ **Salvataggio automatico delle impostazioni**
+- ✅ Notifiche sonore configurabili
+- ✅ Contatore sessioni completate
+- ✅ Pausa e ripresa del timer
+- ✅ Barra di progresso visiva
+- ✅ Statistiche prossima pausa
 
-Fatto! 🎉
+### 🔧 Impostazioni Personalizzabili
+- ⏱ Tempo sessione studio (1-120 min)
+- ☕ Tempo pausa breve (1-60 min)
+- 🌴 Tempo pausa lunga (1-120 min)
+- 🔄 Numero sessioni prima della pausa lunga (1-10)
+- 🔊 Notifiche sonore on/off
 
-### 📝 Cosa Succede Automaticamente
+## 🚀 Installazione e Creazione Eseguibile
 
-**setup_uv.bat** fa:
-- Installa UV (package manager ultra-veloce)
-- Crea ambiente virtuale Python isolato
-- Installa tutte le dipendenze necessarie
+### Metodo 1: Automatico (CONSIGLIATO) ⚡
 
-**crea_exe_uv.bat** fa:
-- Attiva l'ambiente virtuale
-- Compila l'applicazione in .exe
-- Apre la cartella con l'eseguibile
+**Per utenti Windows:**
 
-### 🔧 Metodo Manuale (se preferisci il controllo)
+1. **Scarica tutto il progetto** in una cartella
+2. **Doppio click** su `setup.bat` *(prima volta - configura tutto)*
+3. **Doppio click** su `crea_exe.bat` *(crea l'eseguibile)*
+4. **Trova l'exe** in `dist/PomodoroTimerPro.exe`
 
-#### Passo 1: Installare UV
-Apri PowerShell e digita:
-```powershell
-irm https://astral.sh/uv/install.ps1 | iex
+✨ **Fatto!** Non serve installare nulla manualmente.
+
+### Metodo 2: Esecuzione Diretta Python 🐍
+
+Se vuoi solo testare senza creare l'exe:
+
+```bash
+# Esegui setup
+setup.bat
+
+# Esegui l'app
+.venv\Scripts\python.exe pomodoro_timer.py
 ```
 
-#### Passo 2: Creare Ambiente e Installare Dipendenze
+### Metodo 3: Manuale (per sviluppatori) 🛠️
+
 ```bash
-# Crea ambiente virtuale
+# 1. Installa UV (package manager veloce)
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# 2. Crea ambiente virtuale
 uv venv
 
-# Attiva ambiente
+# 3. Attiva ambiente
 .venv\Scripts\activate
 
-# Installa dipendenze dal pyproject.toml
+# 4. Installa dipendenze
 uv pip install -e .
+
+# 5. Crea eseguibile
+pyinstaller --onefile --windowed --name "PomodoroTimerPro" pomodoro_timer.py
 ```
 
-#### Passo 3: Creare l'Eseguibile
-```bash
-pyinstaller --onefile --windowed --name "PomodoroTimer" pomodoro_timer.py
+## 📁 Struttura del Progetto
+
+```
+pomodoro-timer-pro/
+├── pomodoro_timer.py     # Applicazione principale
+├── pyproject.toml        # Configurazione dipendenze
+├── setup.bat             # Script setup automatico
+├── crea_exe.bat          # Script creazione exe
+├── README.md             # Questa documentazione
+├── .gitignore           # File da ignorare in Git
+├── .venv/               # Ambiente virtuale (creato da setup)
+└── dist/                # Eseguibile finale (creato da crea_exe)
+    └── PomodoroTimerPro.exe
 ```
 
-#### Passo 4: Trovare l'Eseguibile
-L'exe si trova in:
+## 💾 Configurazione Automatica
+
+Le impostazioni vengono salvate automaticamente in:
 ```
-dist/PomodoroTimer.exe
-```
-
----
-
-## 📦 Metodo Alternativo - Con PIP (vecchio metodo)
-
-### Passo 1: Installare Python
-1. Scarica Python da https://www.python.org/downloads/
-2. Durante l'installazione, **seleziona "Add Python to PATH"**
-3. Completa l'installazione
-
-### Passo 2: Installare PyInstaller
-```bash
-pip install pyinstaller
+C:\Users\TuoNome\.pomodoro_timer\config.json
 ```
 
-### Passo 3: Creare l'Eseguibile
-```bash
-pyinstaller --onefile --windowed --name "PomodoroTimer" pomodoro_timer.py
+**Vantaggi:**
+- ✅ Le tue impostazioni vengono ricordate
+- ✅ Non devi riconfigurare ogni volta
+- ✅ Backup e ripristino facile
+
+## 🎯 Come Usare l'Applicazione
+
+### Primo Avvio
+1. **Personalizza** i timer nelle impostazioni
+2. Clicca **"💾 Salva Impostazioni"** per ricordare le preferenze
+3. Clicca **"▶ AVVIA"** per iniziare
+
+### Durante l'Uso
+- **⏸ PAUSA** → Mette in pausa il timer corrente
+- **⏹ STOP** → Ferma e resetta il timer
+- **🔄 Reset Contatore** → Azzera le sessioni completate
+
+### Ciclo Pomodoro Automatico
+L'app gestisce automaticamente il ciclo:
+1. **Studio** (es. 25 min) → Notifica
+2. **Pausa Breve** (es. 5 min) → Notifica
+3. **Studio** → Pausa Breve → ...
+4. Dopo N sessioni → **Pausa Lunga** (es. 15 min)
+
+## 🐛 Risoluzione Problemi
+
+### ❌ Errore: "pomodoro_timer.py non trovato"
+
+**QUESTO È IL TUO PROBLEMA!**
+
+**Causa:** Gli script `.bat` cercano il file Python nella cartella corrente, ma il file si trova altrove.
+
+**Soluzione:**
+1. Assicurati che **tutti i file** siano nella **stessa cartella**:
+   ```
+   MiaCartella/
+   ├── pomodoro_timer.py    ← Deve essere qui!
+   ├── setup.bat
+   ├── crea_exe.bat
+   └── pyproject.toml
+   ```
+
+2. Non mettere gli script in sottocartelle tipo `script/`
+
+3. Verifica di essere nella cartella corretta:
+   ```bash
+   # Apri prompt comandi nella cartella
+   # Controlla i file presenti
+   dir
+   
+   # Dovresti vedere pomodoro_timer.py
+   ```
+
+### ❌ "UV non è riconosciuto"
+
+**Soluzione:** Chiudi e **riapri** il Prompt dei Comandi dopo l'installazione di UV.
+
+### ❌ L'antivirus blocca l'exe
+
+**Causa:** È un **falso positivo** (normale per exe creati con PyInstaller)
+
+**Soluzione:**
+1. Aggiungi un'eccezione nell'antivirus per `dist/PomodoroTimerPro.exe`
+2. Oppure carica l'exe su [VirusTotal](https://www.virustotal.com) per verificare
+
+### ❌ Errore durante la creazione dell'exe
+
+**Possibili cause:**
+- Antivirus troppo aggressivo
+- Spazio su disco insufficiente
+- Permessi mancanti
+
+**Soluzioni:**
+1. Esegui il prompt comandi **come Amministratore**
+2. Disattiva temporaneamente l'antivirus
+3. Libera spazio su disco
+
+## 🎨 Personalizzazione Avanzata
+
+### Modifica Colori
+
+Apri `pomodoro_timer.py` e cerca la sezione `COLORS`:
+
+```python
+COLORS = {
+    'bg_dark': '#1a1a1a',        # Nero profondo
+    'accent_red': '#e63946',     # Rosso accento
+    # ... modifica come preferisci
+}
 ```
 
-## Risoluzione Problemi
+### Modifica Valori Predefiniti
 
-### 🌟 Perché UV invece di PIP?
+Nel file `pomodoro_timer.py`, cerca `default_config`:
+
+```python
+self.default_config = {
+    "study_time": 25,              # Minuti studio
+    "short_break": 5,              # Pausa breve
+    "long_break": 15,              # Pausa lunga
+    "sessions_before_long": 4,     # Sessioni prima pausa lunga
+}
+```
+
+## 🆚 Perché UV invece di PIP?
 
 **UV è 10-100x più veloce!**
-- ⚡ Scritto in Rust (super performante)
-- 📦 Gestione dipendenze migliore
-- 🔒 Lock file automatico
-- 🎯 Risoluzione conflitti più intelligente
-- 💾 Cache globale (risparmia spazio)
+
+| Caratteristica | UV | PIP |
+|---------------|-----|-----|
+| Velocità | ⚡⚡⚡ | ⚪ |
+| Scritto in | Rust | Python |
+| Gestione dipendenze | Intelligente | Basica |
+| Cache globale | ✅ | ❌ |
+| Lock file | Automatico | Manuale |
 
 **Quando usare cosa:**
-- ✅ **UV** - Se vuoi il meglio (consigliato!)
-- ⚪ **PIP** - Se hai problemi con UV o preferisci il classico
+- ✅ **UV** → Migliore performance (CONSIGLIATO)
+- ⚪ **PIP** → Se hai problemi con UV
 
-### Problema: "uv non è riconosciuto"
-**Soluzione:** Chiudi e riapri il Prompt dei Comandi dopo aver installato PyInstaller
+## 📊 Requisiti di Sistema
 
-### Problema: Errore durante la creazione dell'exe
-**Soluzione:** Assicurati di essere nella cartella corretta con il comando:
-```bash
-cd C:\percorso\alla\cartella
-```
+- **OS:** Windows 10/11 (testato), Linux/Mac (dovrebbe funzionare)
+- **Python:** 3.8 o superiore
+- **RAM:** 512 MB minimo
+- **Spazio:** ~50 MB per l'exe finale
 
-### Problema: L'antivirus blocca l'eseguibile
-**Soluzione:** Aggiungi un'eccezione nell'antivirus per il file .exe creato (è un falso positivo comune)
+## 🔐 Privacy e Sicurezza
 
-## Comandi Utili
+- ✅ **Nessun dato inviato online**
+- ✅ Configurazioni salvate solo localmente
+- ✅ Nessuna telemetria
+- ✅ Open source e modificabile
 
-### Verificare installazione Python:
-```bash
-python --version
-```
+## 📝 Changelog
 
-### Verificare installazione PyInstaller:
-```bash
-pyinstaller --version
-```
+### v2.0 (Corrente)
+- 🎨 Interfaccia completamente ridisegnata (nero/grigio/rosso)
+- 💾 Salvataggio automatico impostazioni
+- 📊 Barra di progresso visuale
+- 📈 Statistiche prossima pausa
+- 🔧 Gestione errori migliorata
+- 🏗️ Struttura progetto riorganizzata
+- ⚡ Supporto UV package manager
 
-### Navigare in una cartella:
-```bash
-cd C:\Users\TuoNome\Desktop\MiaCartella
-```
+### v1.0
+- Versione iniziale
 
-### Visualizzare file nella cartella corrente:
-```bash
-dir
-```
+## 🤝 Contribuire
 
-## Personalizzazione
+Contributi, issues e feature requests sono benvenuti!
 
-Puoi modificare i valori predefiniti nel codice:
-- **Riga 91:** Tempo studio predefinito (default: 25 minuti)
-- **Riga 103:** Tempo riposo breve (default: 5 minuti)
-- **Riga 115:** Tempo riposo lungo (default: 15 minuti)
-- **Riga 127:** Sessioni prima del riposo lungo (default: 4)
+1. Fork il progetto
+2. Crea un branch (`git checkout -b feature/AmazingFeature`)
+3. Commit le modifiche (`git commit -m 'Add AmazingFeature'`)
+4. Push al branch (`git push origin feature/AmazingFeature`)
+5. Apri una Pull Request
 
-## Come Usare l'Applicazione
+## 📜 Licenza
 
-1. **Avvia** il timer con il pulsante ▶ Avvia
-2. **Pausa** il timer con il pulsante ⏸ Pausa
-3. **Ferma** il timer con il pulsante ⏹ Stop
-4. **Personalizza** i tempi nelle impostazioni prima di avviare
-5. **Reset** il contatore sessioni quando vuoi ricominciare
+MIT License - Libero per uso personale e commerciale
 
-## Note Tecniche
-- Sviluppato in Python 3
-- Interfaccia grafica: Tkinter (incluso in Python)
-- Audio: winsound (Windows nativo)
-- Nessuna dipendenza esterna richiesta
+## 🙏 Crediti
 
-## Licenza
-Libero per uso personale
+- Basato sulla [Tecnica Pomodoro](https://francescocirillo.com/pages/pomodoro-technique) di Francesco Cirillo
+- Icone emoji di sistema
+- Font Segoe UI (Windows) / San Francisco (Mac) / Roboto (Linux)
+
+## 📧 Supporto
+
+Hai problemi? Suggerimenti?
+
+1. Controlla la sezione **Risoluzione Problemi** sopra
+2. Apri una [Issue](https://github.com/tuousername/pomodoro-timer-pro/issues)
+3. Leggi la documentazione completa
 
 ---
-Creato con ❤️ per migliorare la produttività
+
+**Creato con ❤️ per migliorare la produttività**
+
+*Ricorda: La tecnica Pomodoro funziona meglio quando la usi con costanza!*
